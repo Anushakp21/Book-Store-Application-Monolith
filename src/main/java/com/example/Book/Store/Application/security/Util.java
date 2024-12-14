@@ -17,9 +17,10 @@ import java.util.function.Function;
 @Component
 public class Util {
     public static final String SECRET_KEY ;
-    private static final long EXPIRATION_TIME = 24 * 60 * 60 * 1000;//15 min
+    private static final long EXPIRATION_TIME = 24 * 60 * 60 * 1000;//1 day
 
-    static {
+    static
+    {
         byte[] keyBytes = new byte[64];  // 64 bytes = 512 bits
         new SecureRandom().nextBytes(keyBytes);  // Generate secure random key
         SECRET_KEY = Base64.getEncoder().encodeToString(keyBytes); // Base64 encode the key

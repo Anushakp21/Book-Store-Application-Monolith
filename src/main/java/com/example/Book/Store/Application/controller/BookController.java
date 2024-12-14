@@ -19,9 +19,9 @@ public class BookController {
     BookServiceImpl bookService;
 
     @PostMapping("/add")
-    public ResponseEntity<String> addBook(@ModelAttribute @Valid BookRequest bookRequest) {
+    public ResponseEntity<BookResponse> addBook(@ModelAttribute @Valid BookRequest bookRequest) {
         BookResponse bookResponse = bookService.addBook(bookRequest);
-        return ResponseEntity.status(HttpStatus.CREATED).body("Book Added Successfully");
+        return ResponseEntity.status(HttpStatus.CREATED).body(bookResponse);
     }
 
     @GetMapping("/book/{bookId}")
@@ -37,9 +37,9 @@ public class BookController {
     }
 
     @DeleteMapping("/books/{bookId}")
-    public ResponseEntity<String> deleteBookById(@PathVariable int bookId) {
+    public ResponseEntity<BookResponse> deleteBookById(@PathVariable int bookId) {
         BookResponse bookResponse = bookService.deleteBookById(bookId);
-        return ResponseEntity.status(HttpStatus.OK).body("Book Deleted Successfully");
+        return ResponseEntity.status(HttpStatus.OK).body(bookResponse);
     }
 
     @PatchMapping("/books/{bookId}/price")

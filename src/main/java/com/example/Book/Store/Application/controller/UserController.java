@@ -20,9 +20,9 @@ public class UserController {
     UserServiceImpl userService;
 
     @PostMapping("/register")
-    public ResponseEntity<String> registerUser(@RequestBody RegistrationRequest registrationRequest) {
+    public ResponseEntity<UserResponseDto> registerUser(@RequestBody RegistrationRequest registrationRequest) {
         UserResponseDto userResponse =  userService.registerUser(registrationRequest);
-        return ResponseEntity.status(HttpStatus.CREATED).body("your Registartion Successfully");
+        return ResponseEntity.status(HttpStatus.CREATED).body(userResponse);
     }
 
     @PostMapping("/login")
@@ -50,9 +50,8 @@ public class UserController {
         return ResponseEntity.status(HttpStatus.ACCEPTED).body(userResponse);
     }
     @DeleteMapping("/admin/{userId}")
-    public ResponseEntity<String> deleteUserById(@PathVariable long userId) {
-
+    public ResponseEntity<UserResponseDto> deleteUserById(@PathVariable long userId) {
         UserResponseDto userResponse = userService.deleteUserById(userId);
-        return ResponseEntity.status(HttpStatus.OK).body("User deleted Successfully");
+        return ResponseEntity.status(HttpStatus.OK).body(userResponse);
     }
 }

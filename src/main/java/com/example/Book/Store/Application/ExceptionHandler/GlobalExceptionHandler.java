@@ -31,4 +31,8 @@ public class GlobalExceptionHandler {
     public ResponseEntity<String> handleCartNotFoundById(InvalidQuantityException ex) {
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(ex.getMessage());
     }
+    @ExceptionHandler(OrderNotFoundByIdException.class)
+    public ResponseEntity<String> handleCartNotFoundById(OrderNotFoundByIdException ex) {
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(ex.getMessage());
+    }
 }
