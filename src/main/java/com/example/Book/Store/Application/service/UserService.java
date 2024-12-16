@@ -1,8 +1,6 @@
 package com.example.Book.Store.Application.service;
 
-import com.example.Book.Store.Application.requestdto.LoginRequest;
-import com.example.Book.Store.Application.requestdto.RegistrationRequest;
-import com.example.Book.Store.Application.requestdto.UserRequestDto;
+import com.example.Book.Store.Application.requestdto.*;
 import com.example.Book.Store.Application.responsedto.LoginResponse;
 import com.example.Book.Store.Application.responsedto.UserResponseDto;
 
@@ -20,4 +18,8 @@ public interface UserService {
      UserResponseDto updateUserById(long userId, UserRequestDto userRequest);
 
     UserResponseDto deleteUserById(long userId);
+
+    void initiateForgetPassword(ForgetPasswordRequest forgetPasswordRequest);
+
+    UserResponseDto resetPassword(ResetPasswordRequest resetPasswordRequest);
 }

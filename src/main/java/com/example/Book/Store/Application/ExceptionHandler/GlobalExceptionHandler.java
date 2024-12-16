@@ -35,4 +35,8 @@ public class GlobalExceptionHandler {
     public ResponseEntity<String> handleCartNotFoundById(OrderNotFoundByIdException ex) {
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(ex.getMessage());
     }
+    @ExceptionHandler(InvalidResetTokenException.class)
+    public ResponseEntity<String> handleCartNotFoundById(InvalidResetTokenException ex) {
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(ex.getMessage());
+    }
 }

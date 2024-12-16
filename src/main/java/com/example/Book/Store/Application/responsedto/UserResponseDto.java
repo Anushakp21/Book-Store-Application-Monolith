@@ -23,6 +23,8 @@ public class UserResponseDto {
     @JsonInclude(JsonInclude.Include.NON_NULL)
     private LocalDate updatedDate;
 
+
+
     public Long getUserId() {
         return userId;
     }

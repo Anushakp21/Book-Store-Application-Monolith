@@ -1,8 +1,7 @@
 package com.example.Book.Store.Application.controller;
 
-import com.example.Book.Store.Application.requestdto.LoginRequest;
-import com.example.Book.Store.Application.requestdto.RegistrationRequest;
-import com.example.Book.Store.Application.requestdto.UserRequestDto;
+import com.example.Book.Store.Application.entity.User;
+import com.example.Book.Store.Application.requestdto.*;
 import com.example.Book.Store.Application.responsedto.LoginResponse;
 import com.example.Book.Store.Application.responsedto.UserResponseDto;
 import com.example.Book.Store.Application.serviceimpl.UserServiceImpl;
@@ -54,4 +53,17 @@ public class UserController {
         UserResponseDto userResponse = userService.deleteUserById(userId);
         return ResponseEntity.status(HttpStatus.OK).body(userResponse);
     }
+
+    @PostMapping("/forget-password")
+    public ResponseEntity<String> forgetPassword(@RequestBody ForgetPasswordRequest forgetPasswordRequest) {
+        userService.initiateForgetPassword(forgetPasswordRequest);
+        return ResponseEntity.status(HttpStatus.OK).body("OTP has been sent to your registered email.");
+    }
+
+    @PostMapping("/reset-password")
+    public ResponseEntity<String> resetPassword(@RequestBody ResetPasswordRequest resetPasswordRequest) {
+        UserResponseDto userResponse = userService.resetPassword(resetPasswordRequest);
+        return ResponseEntity.status(HttpStatus.OK).body("Your Password reset Successfully");
+    }
+
 }

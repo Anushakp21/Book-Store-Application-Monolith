@@ -2,12 +2,11 @@ package com.example.Book.Store.Application.entity;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
-import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 import org.hibernate.annotations.CurrentTimestamp;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Entity
 @AllArgsConstructor
@@ -31,6 +30,9 @@ public class User {
 
     @Enumerated(value = EnumType.STRING)
     private Role role;
+
+    private String setResetToken;
+    private LocalDateTime otpExpiry;
 
     public Long getUserId() {
         return userId;
@@ -117,5 +119,21 @@ public class User {
                 ", email='" + email + '\'' +
                 ", role=" + role +
                 '}';
+    }
+
+    public LocalDateTime getOtpExpiry() {
+        return otpExpiry;
+    }
+
+    public void setOtpExpiry(LocalDateTime otpExpiry) {
+        this.otpExpiry = otpExpiry;
+    }
+
+    public String getSetResetToken() {
+        return setResetToken;
+    }
+
+    public void setSetResetToken(String setResetToken) {
+        this.setResetToken = setResetToken;
     }
 }
